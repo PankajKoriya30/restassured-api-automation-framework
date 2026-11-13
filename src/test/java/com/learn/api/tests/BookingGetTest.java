@@ -1,5 +1,7 @@
 package com.learn.api.tests;
 
+import com.learn.api.base.BaseTest;
+import com.learn.api.client.ApiClient;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -9,18 +11,12 @@ import org.testng.annotations.Test;
 import java.util.List;
 import java.util.Map;
 
-public class BookingGetTest {
-
-    private static final String baseUrl =
-            "https://restful-booker.herokuapp.com";
+public class BookingGetTest extends BaseTest {
 
     @Test
     public void verifyGetAllBookingIds(){
 
-        Response response = RestAssured.given()
-                .baseUri(baseUrl)
-                .accept(ContentType.JSON)
-                .when().get("/booking");
+        Response response = ApiClient.get(requestSpecification, "/booking");
 
         // validate the http status code
         Assert.assertEquals(response.getStatusCode(), 200,
