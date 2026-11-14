@@ -4,7 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-public class ApiClient {
+public class ApiClientRequests {
 
     //GET Request
     public static Response get(RequestSpecification requestSpecification,
