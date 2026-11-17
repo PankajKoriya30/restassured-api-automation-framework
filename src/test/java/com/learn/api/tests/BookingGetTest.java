@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class BookingGetTest extends BaseTest {
 
     @Test
-    public void verifyGetAllBookingIds(){
+    public void verifyGetAllBookingIdsAPI(){
 
         Response response = ApiClientRequests.get(requestSpecification,
                 ApiEndpointsContants.GET_BOOKINGS);

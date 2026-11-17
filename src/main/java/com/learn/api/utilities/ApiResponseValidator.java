@@ -1,6 +1,7 @@
 package com.learn.api.utilities;
 
 import io.restassured.response.Response;
+import org.testng.Assert;
 
 public class ApiResponseValidator {
 
@@ -29,5 +30,10 @@ public class ApiResponseValidator {
         if (response.getBody() == null) {
             throw new AssertionError("Response body is null");
         }
+    }
+
+    public static void validateJsonField(Response response, String fieldName){
+        Assert.assertNotNull(response.jsonPath().get(fieldName),
+                "Field " + fieldName + " is missing in the response");
     }
 }

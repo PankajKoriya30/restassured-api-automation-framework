@@ -2,23 +2,22 @@ package com.learn.api.base;
 
 import com.learn.api.utilities.ConfigReader;
 import io.restassured.builder.RequestSpecBuilder;
-import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeClass;
 import java.io.IOException;
 
 public class BaseTest {
 
     protected RequestSpecification requestSpecification;
 
-    @BeforeTest
+    @BeforeClass
     public void setup() throws IOException {
         ConfigReader.loadProperties("qa");
         String baseURL = ConfigReader.getProperty("baseurl");
         requestSpecification = new RequestSpecBuilder()
                 .setBaseUri(baseURL)
-                .setContentType(ContentType.JSON)
-                .setAccept(ContentType.JSON)
+                .setContentType("application/json")
+                .setAccept("application/json")
                 .build();
         System.out.println(
                 "API Base URL: " + baseURL);
